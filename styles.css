@@ -1,0 +1,74 @@
+/** Reset **/
+
+:root {
+    --main-bg-color: rgba(255, 255, 255, 1);
+    --primary-btn-color: rgba(51, 51, 51, 0.88);
+    --main-font: "Roboto", sans-serif;
+    --title-font: "Archivo", sans-serif;
+    --found-message-font:"Archivo", sans-serif;
+    font-size: 16px;
+    --main-title-font-sm: 1.875rem;
+    --main-title-font-md: 2.91rem;
+    --main-title-font-lg: 4.5rem;
+    --main-title-font-xl: 6rem;
+    --filter-font-sm: 0.875rem;
+    --filter-font-lg: 0.93rem;
+    --filter-font-xl: 1.1rem;
+    --filter-font-btn-sm: var(--filter-font-sm);
+    --filter-font-btn-lg: 1.125rem;
+    --header-bkgd-img-size-sm: 100% 100%;
+    --header-bkgd-img-size-md: 100% 125%;
+    --header-bkgd-img-size-lg: 100% 150%;
+    --filter-icon-bkgd-size-sm: 0.875rem 1rem;
+    --filter-icon-bkgd-size-lg: 1rem 1rem;
+}
+html,
+body {
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    align-items: center;
+    font-size: 16px;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 3rem;
+}
+/** Header **/
+
+.header {
+    background-image: url(./assets/Group\ 2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    display: flex;
+    color: #ffffff;
+}
+
+.title {
+    font-family: var(--title-font);
+    display: flex;
+    align-items: baseline;
+}
+
+.filter__container {
+    display: flex;
+    background-color: #030202;
+    width: 40px;
+    height: 100px;
+}
+
+.message__found {
+    display: flex;
+    background-color: #000000;
+}
