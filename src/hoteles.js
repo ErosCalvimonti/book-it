@@ -1,5 +1,5 @@
 export function requestingHotels() {
     return fetch(
-        "https://6256097e8646add390e01d99.mockapi.io/hotels/reservation/hotels"
+        "https://api.mockfly.dev/mocks/17528a9e-42f8-4ea9-b922-4d21b3397e8d/book-it"
     )
 }
