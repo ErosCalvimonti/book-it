@@ -70,9 +70,7 @@ signIn.setAttribute("href", "#")
 listYourProperty.innerText = "List your property"
 listYourProperty.setAttribute("href", "#")
 
-// Create Title
-
-// Create Message Found
+// Create Message
 const weFound = document.createElement("p")
 messageFound.appendChild(weFound)
 weFound.className = "subtitle"
@@ -175,7 +173,7 @@ filterContainer.className = "filter__container"
 messageFound.className = "message__found"
 filterGrid.className = "filter__grid filter__grid__color"
 selectCountry.setAttribute("class", "filter__icon filter__country")
-// selectCountry.setAttribute("id", "select-country")
+
 selectPrice.className = "filter__icon filter__stars"
 selectSize.className = "filter__icon filter__size"
 buttonClear.className = "buttons__filter"
@@ -185,16 +183,16 @@ const containerHotels = document.createElement("section")
 containerHotels.className = "container__hotels"
 body.appendChild(containerHotels)
 
-let hotelList = []
+let hotelData = []
 
 async function fetchingHotels() {
     const response = await requestingHotels()
     const data = await response.json()
     return data
 }
-function creatingHotels(hotelsInfo) {
+function creatingHotels(hotelData) {
     containerHotels.innerHTML = ``
-    hotelsInfo.forEach((hotel) => {
+    hotelData.forEach((hotel) => {
         const cardHotel = document.createElement("article")
         cardHotel.className = "card__hotel"
         containerHotels.appendChild(cardHotel)
@@ -258,12 +256,30 @@ function creatingHotels(hotelsInfo) {
     })
 }
 window.addEventListener("load", async () => {
-    hotelList = await fetchingHotels()
-    creatingHotels(hotelList)
+    hotelData = await fetchingHotels()
+    creatingHotels(hotelData)
 })
+const containerNoFound = document.createElement("section")
+containerNoFound.className = "container__no__found"
+containerNoFound.style.display = "none"
+body.appendChild(containerNoFound)
+const iconNoFound = document.createElement("img")
+iconNoFound.className = "icon__no__found"
+containerNoFound.appendChild(iconNoFound)
+iconNoFound.src =
+    "data:image/svg+xml,%3csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' fill='%23004085' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 330 330' style='enable-background:new 0 0 330 330;' xml:space='preserve'%3e %3cg%3e %3cpath d='M165,0C74.019,0,0,74.02,0,165.001C0,255.982,74.019,330,165,330s165-74.018,165-164.999C330,74.02,255.981,0,165,0z M165,300c-74.44,0-135-60.56-135-134.999C30,90.562,90.56,30,165,30s135,60.562,135,135.001C300,239.44,239.439,300,165,300z'/%3e %3cpath d='M164.998,70c-11.026,0-19.996,8.976-19.996,20.009c0,11.023,8.97,19.991,19.996,19.991 c11.026,0,19.996-8.968,19.996-19.991C184.994,78.976,176.024,70,164.998,70z'/%3e %3cpath d='M165,140c-8.284,0-15,6.716-15,15v90c0,8.284,6.716,15,15,15c8.284,0,15-6.716,15-15v-90C180,146.716,173.284,140,165,140z '/%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3c/svg%3e"
+const textNoFound = document.createElement("p")
+textNoFound.className = "text__no__found"
+containerNoFound.appendChild(textNoFound)
+textNoFound.innerText =
+    "No hotels left with those filters. Try a new combination of them."
+
+const showNoFoundHotel = () => (containerNoFound.style.display = "flex")
+
+const hideNoFoundHotel = () => (containerNoFound.style.display = "none")
 
 buttonSearch.addEventListener("click", () => {
-    const filteredHotels = hotelList
+    const filteredHotels = hotelData
         .filter((hotel) =>
             selectCountry.value !== "All countries"
                 ? hotel.country === selectCountry.value
@@ -288,29 +304,15 @@ buttonSearch.addEventListener("click", () => {
 
     creatingHotels(filteredHotels)
     if (filteredHotels.length === 0) {
-        return noFoundHotel()
+        showNoFoundHotel()
+    } else {
+        containerNoFound.style.display = "none"
     }
 })
-
-const noFoundHotel = () => {
-    const containerNoFound = document.createElement("section")
-    containerNoFound.className = "container__no__found"
-    body.appendChild(containerNoFound)
-    const iconNoFound = document.createElement("img")
-    iconNoFound.className = "icon__no__found"
-    containerNoFound.appendChild(iconNoFound)
-    iconNoFound.src =
-        "data:image/svg+xml,%3csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' fill='%23004085' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 330 330' style='enable-background:new 0 0 330 330;' xml:space='preserve'%3e %3cg%3e %3cpath d='M165,0C74.019,0,0,74.02,0,165.001C0,255.982,74.019,330,165,330s165-74.018,165-164.999C330,74.02,255.981,0,165,0z M165,300c-74.44,0-135-60.56-135-134.999C30,90.562,90.56,30,165,30s135,60.562,135,135.001C300,239.44,239.439,300,165,300z'/%3e %3cpath d='M164.998,70c-11.026,0-19.996,8.976-19.996,20.009c0,11.023,8.97,19.991,19.996,19.991 c11.026,0,19.996-8.968,19.996-19.991C184.994,78.976,176.024,70,164.998,70z'/%3e %3cpath d='M165,140c-8.284,0-15,6.716-15,15v90c0,8.284,6.716,15,15,15c8.284,0,15-6.716,15-15v-90C180,146.716,173.284,140,165,140z '/%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3cg%3e %3c/g%3e %3c/svg%3e"
-    const textNoFound = document.createElement("p")
-    textNoFound.className = "text__no__found"
-    containerNoFound.appendChild(textNoFound)
-    textNoFound.innerText =
-        "No hotels left with those filters. Try a new combination of them."
-}
-
 buttonClear.addEventListener("click", () => {
     selectCountry.value = "All countries"
     selectSize.value = "All Sizes"
     selectPrice.value = "All Categories"
-    creatingHotels(hotelList)
+    creatingHotels(hotelData)
+    hideNoFoundHotel()
 })
