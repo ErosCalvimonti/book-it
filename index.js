@@ -6,12 +6,6 @@ const body = document.body
 
 const header = document.createElement("header")
 const title = document.createElement("p")
-const nav = document.createElement("nav")
-const containerNav = document.createElement("div")
-const home = document.createElement("a")
-const currency = document.createElement("a")
-const signIn = document.createElement("a")
-const listYourProperty = document.createElement("a")
 const messageFound = document.createElement("div")
 const messageHover = document.createElement("section")
 const filterContainer = document.createElement("div")
@@ -42,13 +36,7 @@ inputDateOut.setAttribute("value", "")
 
 // Locate Elements
 body.appendChild(header)
-header.appendChild(nav)
-nav.appendChild(title)
-nav.appendChild(containerNav)
-containerNav.appendChild(home)
-containerNav.appendChild(currency)
-containerNav.appendChild(signIn)
-containerNav.appendChild(listYourProperty)
+header.appendChild(title)
 header.appendChild(messageFound)
 header.appendChild(filterContainer)
 body.appendChild(messageHover)
@@ -56,19 +44,6 @@ filterContainer.appendChild(filterGrid)
 filterGrid.appendChild(selectCountry)
 filterGrid.appendChild(selectPrice)
 filterGrid.appendChild(selectSize)
-
-// Create nav
-home.innerText = "Home"
-home.setAttribute("href", "#")
-
-currency.innerText = "USD"
-currency.setAttribute("href", "#")
-
-signIn.innerText = "Sign in"
-signIn.setAttribute("href", "#")
-
-listYourProperty.innerText = "List your property"
-listYourProperty.setAttribute("href", "#")
 
 // Create Message
 const weFound = document.createElement("p")
@@ -165,8 +140,6 @@ selectSize.appendChild(optionLarge)
 
 // Customize elementss with DOM
 header.className = "header"
-nav.className = "menu"
-containerNav.className = "menu__container"
 title.innerText = "Book It!"
 title.className = "title"
 filterContainer.className = "filter__container"
