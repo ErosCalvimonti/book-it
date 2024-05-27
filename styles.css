@@ -3,7 +3,7 @@
 :root {
     --main-bg-color: rgba(255, 255, 255, 1);
     --primary-btn-color: rgba(51, 51, 51, 0.88);
-    --filter-grid-background:background-color: rgba(255, 255, 255, 0.75);
+    --filter-grid-background: rgba(255, 255, 255, 0.75);
     --main-font: "Roboto", sans-serif;
     --title-font: "Lobster", sans-serif;
     --found-message-font: "Archivo", sans-serif;
@@ -20,7 +20,6 @@
     --header-bkgd-img-size-lg: 100% 150%;
     --filter-icon-bkgd-size-sm: 0.875rem 1rem;
     --filter-icon-bkgd-size-lg: 1rem 1rem;
-
 }
 html,
 body {
@@ -44,7 +43,6 @@ a {
     list-style: none;
     text-decoration: none;
     color: var(--main-bg-color);
-
 }
 
 /** Header **/
@@ -65,12 +63,11 @@ a {
     color: #ffffff;
 }
 
-
 .title {
     font-family: var(--title-font);
     display: flex;
     padding-bottom: 2rem;
-    font-size: var(--main-title-font-md)
+    font-size: var(--main-title-font-md);
 }
 
 .message__found {
@@ -95,7 +92,7 @@ a {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 2.4rem;
+    height: 2.5rem;
     background-color: transparent;
     border-radius: 0.375rem;
 }
@@ -108,13 +105,13 @@ a {
     font-size: var(--filter-font-lg);
 }
 
-.filter__grid>* {
+.filter__grid > * {
     flex: 1;
     font-size: var(--filter-font-lg);
 }
 
 .filter__icon {
-    background-color:rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.75);
     background-repeat: no-repeat;
     background-position-x: 0.312rem;
     background-position-y: center;
@@ -123,7 +120,7 @@ a {
 
 .filter__country {
     background: url(./assets/country.svg);
-    background-color:rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.75);
     background-repeat: no-repeat;
     background-position-x: 0.312rem;
     background-size: var(--filter-icon-bkgd-size-lg);
@@ -133,7 +130,7 @@ a {
 .filter__stars {
     background: url(./assets/star-svgrepo-com.svg);
     background-size: 0.8rem;
-    background-color:rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.75);
     background-repeat: no-repeat;
     background-position-x: 0.312rem;
     background-position-y: center;
@@ -142,7 +139,7 @@ a {
 .filter__size {
     background: url(./assets/bed.svg);
     background-size: 0.8rem;
-    background-color:rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.75);
     background-repeat: no-repeat;
     background-position-x: 0.312rem;
     background-position-y: center;
@@ -151,7 +148,7 @@ a {
 .filter__date__in {
     background: url(./assets/in.svg);
     background-size: 0.8rem;
-    background-color:rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.75);
     background-repeat: no-repeat;
     background-position-x: 0.312rem;
     background-position-y: center;
@@ -160,7 +157,7 @@ a {
 .filter__date__out {
     background: url(./assets/out.svg);
     background-size: 0.8rem;
-    background-color:rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.75);
     background-repeat: no-repeat;
     background-position-x: 0.312rem;
     background-position-y: center;
@@ -168,14 +165,13 @@ a {
 
 .buttons__filter {
     max-width: 5rem;
-    border-radius: .5rem;
-    border: 2px solid white;
+    border-radius: 0.5rem;
+    border: 2px solid rgb(255, 255, 255);
     background-color: #333;
-    color: white;
+    color: #ffffff;
     font-weight: bold;
     cursor: pointer;
 }
-
 .container__hotels {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -186,18 +182,17 @@ a {
 /** Cards **/
 
 .card__hotel {
-    position: relative;
+    flex: 1 1 calc(33.333% - 1rem);
     border-radius: 1rem;
-    width: 100%;
-    height: auto;
-    height: 24vw;
     overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .card__hotel:hover {
-    .container__description{
+    .container__description {
         display: flex;
-    } 
+    }
     .hotel__image {
         filter: brightness(0.5);
     }
@@ -208,107 +203,220 @@ a {
     height: auto;
     border-radius: 1rem;
     filter: brightness(0.7);
-}        
+    display: block;
+    margin-bottom: -6rem;
+    overflow: hidden;
+}
 
-.container__info{
+.container__info {
     display: flex;
     flex-flow: column wrap;
     position: relative;
     z-index: 1;
-    top: -6rem;
-    right: -.7rem;
-    
+    top: -1rem;
+    right: -0.7rem;
 }
 
-.hotel__title{
+.hotel__title {
     color: #ffffff;
+    font-size: 1.2rem;
+}
+.container__info__country {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    color: rgb(255, 255, 255);
+    width: 100%;
+}
 
-}    
 .button__book__it {
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     border: 2px solid white;
     background-color: #333;
     color: rgb(255, 255, 255);
     font-weight: bold;
-    padding: 0.5rem ; 
+    padding: 0.5rem;
     cursor: pointer;
     width: 5.5rem;
-    display: flex;
-    position: absolute;
-    top: 1.5rem;
-    left: 22.5rem;
-}    
+    margin-left: auto;
+    margin-right: 2rem;
+}
 
-/* Container information of the country */
-.container__info__country {
-    display: flex;
-    align-items: center;
-    padding-top: .5rem;
-    color: #ffffff;
+button:hover {
+    background-color: #7a7a7a75;
+}
 
-}    
-
-.flag__country{
+.flag__country {
     width: 1.5rem;
     height: 1.5rem;
-    padding-right:.5rem ;
+    padding-right: 0.5rem;
 }
 
-
 /* Container size and stars of hotels */
-.category__and__size{
+.category__and__size {
     display: flex;
     align-items: center;
-    padding: .3rem;
+    padding: 0.3rem;
     color: #ffffff;
 }
 
-.stars__hotel{
+.stars__hotel {
     padding: 0 1rem;
     align-items: center;
 }
 
-.container__description{
+.container__description {
     display: none;
     position: absolute;
     top: 1rem;
     z-index: 4;
     color: #ffffff;
-    height: 25rem;
+    height: 11rem;
     width: 100%;
-
+    overflow: hidden;
 }
 
-.description__hotel{
+.description__hotel {
     display: flex;
     max-width: 75%;
     font-size: 1rem;
-    margin: initial;
-    padding: 1rem;
+    padding: 1rem 0 0 1rem;
 }
 
-.container__no__found{
+.container__no__found {
     display: flex;
     justify-content: flex-start;
     color: #004085;
     background-color: #cce5ff;
     align-items: center;
-    padding: .5rem;
+    padding: 0.5rem;
     margin: 0 1rem;
-    border: .1px solid #00000072;
-    border-radius:1rem ;
+    border: 0.1px solid #00000072;
+    border-radius: 1rem;
 }
 
-.icon__no__found{
+.icon__no__found {
     width: 2.5rem;
     height: 1.5rem;
-    padding-right:.5rem ;
+    padding-right: 0.5rem;
 }
 
-.text__no__found{
+.text__no__found {
     display: flex;
-    border-radius: .7rem;
+    border-radius: 0.7rem;
     color: #004085;
     font-size: 1.1rem;
     align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+    .hotel__title {
+        font-size: 1rem;
+    }
+
+    .description__hotel {
+        font-size: 0.7rem;
+        max-width: 90%;
+    }
+
+    .container__info {
+        font-size: 0.8rem;
+    }
+
+    .button__book__it {
+        width: 4.5rem;
+        margin-left: auto;
+        margin-right: 2.1rem;
+        font-size: 0.7rem;
+    }
+}
+@media screen and (max-width: 800px) {
+    .buttons__filter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+        padding: 1rem;
+    }
+
+    .container__hotels {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .description__hotel {
+        font-size: 1rem;
+        max-width: 90%;
+    }
+
+    .hotel__title {
+        font-size: 1.3rem;
+    }
+
+    .container__info__country {
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 500px) {
+    .header {
+        padding: 2rem 1rem;
+    }
+
+    .filter__grid {
+        display: grid;
+        grid-template-columns: 49% 49%;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "countries countries"
+            "date-from date-to"
+            "prices sizes"
+            ". search";
+        gap: 0.312rem;
+    }
+
+    .filter__container {
+        display: flex;
+        justify-content: center;
+        height: 10rem;
+        background-color: var(--filter-grid-background);
+        border-radius: 0.375rem;
+        padding: 0.5rem;
+    }
+
+    .filter__date__in {
+        grid-area: date-from;
+    }
+
+    .filter__date__out {
+        grid-area: date-to;
+    }
+
+    .filter__size {
+        grid-area: sizes;
+    }
+
+    .filter__country {
+        grid-area: countries;
+    }
+
+    .filter__stars {
+        grid-area: prices;
+    }
+
+    .filter__container > * button {
+        padding: 0.5rem;
+        width: 3.5rem;
+        height: 2rem;
+        margin-bottom: 0;
+    }
+
+    .clear__button {
+        display: none;
+    }
+
+    .description__hotel {
+        font-size: 0.8rem;
+    }
 }

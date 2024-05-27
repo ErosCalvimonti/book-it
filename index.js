@@ -7,7 +7,6 @@ const body = document.body
 const header = document.createElement("header")
 const title = document.createElement("p")
 const messageFound = document.createElement("div")
-const messageHover = document.createElement("section")
 const filterContainer = document.createElement("div")
 const filterGrid = document.createElement("div")
 const selectCountry = document.createElement("select")
@@ -39,7 +38,6 @@ body.appendChild(header)
 header.appendChild(title)
 header.appendChild(messageFound)
 header.appendChild(filterContainer)
-body.appendChild(messageHover)
 filterContainer.appendChild(filterGrid)
 filterGrid.appendChild(selectCountry)
 filterGrid.appendChild(selectPrice)
@@ -149,7 +147,7 @@ selectCountry.setAttribute("class", "filter__icon filter__country")
 
 selectPrice.className = "filter__icon filter__stars"
 selectSize.className = "filter__icon filter__size"
-buttonClear.className = "buttons__filter"
+buttonClear.className = "buttons__filter clear__button"
 buttonSearch.className = "buttons__filter"
 
 const containerHotels = document.createElement("section")
@@ -209,14 +207,10 @@ function creatingHotels(hotelData) {
         sizeRoom.innerText = hotel.rooms + " rooms"
         containerInfoCountry.appendChild(sizeRoom)
 
-        const containerBookit = document.createElement("div")
-        containerBookit.className = "container__bookit"
-        containerInfo.appendChild(containerBookit)
-
         const buttonBookIt = document.createElement("button")
         buttonBookIt.className = "button__book__it"
         buttonBookIt.innerText = "Book It!"
-        containerBookit.appendChild(buttonBookIt)
+        containerInfoCountry.appendChild(buttonBookIt)
 
         const containerDescription = document.createElement("section")
         containerDescription.className = "container__description"
@@ -248,7 +242,6 @@ textNoFound.innerText =
     "No hotels left with those filters. Try a new combination of them."
 
 const showNoFoundHotel = () => (containerNoFound.style.display = "flex")
-
 const hideNoFoundHotel = () => (containerNoFound.style.display = "none")
 
 buttonSearch.addEventListener("click", () => {
