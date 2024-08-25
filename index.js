@@ -162,66 +162,72 @@ async function fetchingHotels() {
     return data
 }
 function creatingHotels(hotelData) {
-    containerHotels.innerHTML = ``
+    containerHotels.innerHTML = ""; // Clear previous content
+    const fragment = document.createDocumentFragment(); // Create a DocumentFragment
+
     hotelData.forEach((hotel) => {
-        const cardHotel = document.createElement("article")
-        cardHotel.className = "card__hotel"
-        containerHotels.appendChild(cardHotel)
+        const cardHotel = document.createElement("article");
+        cardHotel.className = "card__hotel";
 
-        const imageHotel = document.createElement("img")
-        imageHotel.className = "hotel__image"
-        imageHotel.setAttribute("src", hotel.photo)
-        imageHotel.setAttribute("alt", hotel.name)
-        cardHotel.appendChild(imageHotel)
+        const imageHotel = document.createElement("img");
+        imageHotel.className = "hotel__image";
+        imageHotel.setAttribute("src", hotel.photo);
+        imageHotel.setAttribute("alt", hotel.name);
+        cardHotel.appendChild(imageHotel);
 
-        const containerInfo = document.createElement("section")
-        containerInfo.className = "container__info"
-        cardHotel.appendChild(containerInfo)
+        const containerInfo = document.createElement("section");
+        containerInfo.className = "container__info";
+        cardHotel.appendChild(containerInfo);
 
-        const hotelTitle = document.createElement("h2")
-        hotelTitle.className = "hotel__title"
-        hotelTitle.innerText = hotel.name
-        containerInfo.appendChild(hotelTitle)
+        const hotelTitle = document.createElement("h2");
+        hotelTitle.className = "hotel__title";
+        hotelTitle.innerText = hotel.name;
+        containerInfo.appendChild(hotelTitle);
 
-        const containerInfoCountry = document.createElement("section")
-        containerInfoCountry.className = "container__info__country"
-        containerInfo.appendChild(containerInfoCountry)
+        const containerInfoCountry = document.createElement("section");
+        containerInfoCountry.className = "container__info__country";
+        containerInfo.appendChild(containerInfoCountry);
 
-        const flagCountry = document.createElement("img")
-        flagCountry.className = "flag__country"
-        flagCountry.setAttribute("src", hotel.flag)
-        containerInfoCountry.appendChild(flagCountry)
+        const flagCountry = document.createElement("img");
+        flagCountry.className = "flag__country";
+        flagCountry.setAttribute("src", hotel.flag);
+        containerInfoCountry.appendChild(flagCountry);
 
-        const countryOfHotel = document.createElement("p")
-        countryOfHotel.className = "country__hotel"
-        countryOfHotel.innerText = hotel.country
-        containerInfoCountry.appendChild(countryOfHotel)
+        const countryOfHotel = document.createElement("p");
+        countryOfHotel.className = "country__hotel";
+        countryOfHotel.innerText = hotel.country;
+        containerInfoCountry.appendChild(countryOfHotel);
 
-        const starsHotels = document.createElement("p")
-        starsHotels.className = "stars__hotel"
-        starsHotels.innerText = hotel.price
-        containerInfoCountry.appendChild(starsHotels)
+        const starsHotels = document.createElement("p");
+        starsHotels.className = "stars__hotel";
+        starsHotels.innerText = hotel.price;
+        containerInfoCountry.appendChild(starsHotels);
 
-        const sizeRoom = document.createElement("p")
-        sizeRoom.className = "size__room"
-        sizeRoom.innerText = hotel.rooms + " rooms"
-        containerInfoCountry.appendChild(sizeRoom)
+        const sizeRoom = document.createElement("p");
+        sizeRoom.className = "size__room";
+        sizeRoom.innerText = hotel.rooms + " rooms";
+        containerInfoCountry.appendChild(sizeRoom);
 
-        const buttonBookIt = document.createElement("button")
-        buttonBookIt.className = "button__book__it"
-        buttonBookIt.innerText = "Book It!"
-        containerInfoCountry.appendChild(buttonBookIt)
+        const buttonBookIt = document.createElement("button");
+        buttonBookIt.className = "button__book__it";
+        buttonBookIt.innerText = "Book It!";
+        containerInfoCountry.appendChild(buttonBookIt);
 
-        const containerDescription = document.createElement("section")
-        containerDescription.className = "container__description"
-        cardHotel.appendChild(containerDescription)
+        const containerDescription = document.createElement("section");
+        containerDescription.className = "container__description";
+        cardHotel.appendChild(containerDescription);
 
-        const descriptionHotel = document.createElement("p")
-        descriptionHotel.className = "description__hotel"
-        descriptionHotel.innerText = hotel.description
-        containerDescription.appendChild(descriptionHotel)
-    })
+        const descriptionHotel = document.createElement("p");
+        descriptionHotel.className = "description__hotel";
+        descriptionHotel.innerText = hotel.description;
+        containerDescription.appendChild(descriptionHotel);
+
+        fragment.appendChild(cardHotel); // Append each cardHotel to the fragment
+    });
+
+    containerHotels.appendChild(fragment); // Append the fragment to the containerHotels once
 }
+
 window.addEventListener("load", async () => {
     hotelData = await fetchingHotels()
     creatingHotels(hotelData)
